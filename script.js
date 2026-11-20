@@ -1,10 +1,10 @@
 // Change wedding information here. Leave unknown fields empty until details are confirmed.
 const invitation = {
-  groom: "신랑 이름",
-  bride: "신부 이름",
-  dateLabel: "[예식 날짜와 시간을 입력해 주세요]",
-  venue: "[예식장 이름을 입력해 주세요]",
-  address: "[주소를 입력해 주세요]",
+  groom: "박우진",
+  bride: "김하나",
+  dateLabel: "2027년 5월 15일",
+  venue: "가족과 함께하는 작은 예식",
+  address: "예식 장소와 시간은 가족분들께 개별 안내드립니다.",
   mapQuery: "", // Example: "서울특별시 중구 세종대로 110"
   musicUrl: "", // Optional local audio file path. Music never starts automatically.
   photos: [
@@ -36,24 +36,12 @@ const revealObserver = new IntersectionObserver(entries => entries.forEach(entry
 }), { threshold: .12 });
 document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
-const mapLink = document.querySelector(".map-link");
-const copyButton = document.querySelector(".copy-address");
-if (invitation.mapQuery.trim()) {
-  mapLink.href = `https://map.naver.com/p/search/${encodeURIComponent(invitation.mapQuery)}`;
-  mapLink.removeAttribute("aria-disabled");
-  copyButton.disabled = false;
-}
 const toast = document.querySelector(".toast");
 let toastTimer;
 function showToast(message) {
   toast.textContent = message; toast.classList.add("show"); clearTimeout(toastTimer);
   toastTimer = setTimeout(() => toast.classList.remove("show"), 2300);
 }
-copyButton.addEventListener("click", async () => {
-  try { await navigator.clipboard.writeText(invitation.address); showToast("주소를 복사했어요."); }
-  catch { showToast("주소 복사 기능은 보안 연결에서 사용할 수 있어요."); }
-});
-
 const lightbox = document.querySelector(".lightbox");
 document.querySelectorAll(".photo-tile").forEach(tile => tile.addEventListener("click", () => {
   const index = Number(tile.dataset.photo);
@@ -64,12 +52,6 @@ document.querySelectorAll(".photo-tile").forEach(tile => tile.addEventListener("
   lightbox.showModal();
 }));
 document.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
-
-const rsvp = document.querySelector(".rsvp-dialog");
-document.querySelector("#rsvp-open").addEventListener("click", () => rsvp.showModal());
-rsvp.addEventListener("close", () => {
-  if (rsvp.returnValue === "submit") showToast("미리보기 회신이 확인됐어요. 실제 전송은 되지 않았습니다.");
-});
 
 if (invitation.musicUrl) {
   const toggle = document.querySelector(".music-toggle");

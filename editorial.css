@@ -52,6 +52,7 @@
 .note-bubble b{color:#a82d31;font:italic 21px var(--display)}.note-bubble span{font-size:10px;color:#5e544e;line-height:1.5}.note-bubble i{margin-left:auto;color:#af5552;font:18px var(--script)}
 .note-bubble.bubble-right{margin-right:0;margin-left:17px;transform:rotate(1deg);border-color:#d1aaa0}
 .note-bubble.bubble-right:after{left:auto;right:27px}
+.family-only-note{display:inline-block;margin:20px auto 0;padding:9px 13px;border:1px solid #c59c91;color:#7c514b;font:10px/1.7 var(--mono);letter-spacing:.04em}
 .bubble-footnote{text-align:center;color:#8c7b71;font:8px var(--mono);margin:15px 0 0}
 .details-block{padding-top:27px;padding-bottom:29px;background:linear-gradient(180deg,transparent,#f4ecdf55,transparent)}
 .cheers-block{padding-top:31px;padding-bottom:41px}
